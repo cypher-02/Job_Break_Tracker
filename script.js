@@ -34,7 +34,7 @@ sumbit.addEventListener('click', ()=>{
     let enter_h = enter_hours.value.trim();
     let enter_min = enter_minutes.value.trim();
 
-    if(exit_hours.value || exit_minutes.value < enter_hours.value || enter_minutes.value){
+    if(exit_hours.value < enter_hours.value ){
         alert("Error wrong input");
         a = JSON.parse(storedValue);
     }
