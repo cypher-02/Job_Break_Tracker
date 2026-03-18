@@ -33,37 +33,40 @@ sumbit.addEventListener('click', ()=>{
     let exit_min = exit_minutes.value.trim();
     let enter_h = enter_hours.value.trim();
     let enter_min = enter_minutes.value.trim();
-    
+
     if(exit_hours.value || exit_minutes.value < enter_hours.value || enter_minutes.value){
         alert("Error wrong input");
+        a = JSON.parse(storedValue);
+    }
+    else{
+        //string conversion
+        let ent_h = parseFloat(exit_h);
+        let ent_min = parseFloat(exit_min);
+        let ext_h = parseFloat(enter_h);
+        let ext_min = parseFloat(enter_min);
+
+        //hours to min
+        let ent_h_to_min = ent_h * 60;
+        let ext_h_to_min = ext_h * 60;
+        
+        ent_h_to_min = ent_h_to_min + ent_min;
+        ext_h_to_min = ext_h_to_min + ext_min;
+
+        
+        a = a-(ext_h_to_min - ent_h_to_min);
+
+        // save value
+        localStorage.setItem('a', JSON.stringify(a));
+
+        // update text
+        updateBreak();
+
+        exit_hours.value = "";
+        exit_minutes.value = "";
+        enter_hours.value = "";
+        enter_minutes.value = "";
     }
 
-    //string conversion
-    let ent_h = parseFloat(exit_h);
-    let ent_min = parseFloat(exit_min);
-    let ext_h = parseFloat(enter_h);
-    let ext_min = parseFloat(enter_min);
-
-    //hours to min
-    let ent_h_to_min = ent_h * 60;
-    let ext_h_to_min = ext_h * 60;
-    
-    ent_h_to_min = ent_h_to_min + ent_min;
-    ext_h_to_min = ext_h_to_min + ext_min;
-
-    
-    a = a-(ext_h_to_min - ent_h_to_min);
-
-    // save value
-    localStorage.setItem('a', JSON.stringify(a));
-
-    // update text
-    updateBreak();
-
-    exit_hours.value = "";
-    exit_minutes.value = "";
-    enter_hours.value = "";
-    enter_minutes.value = "";
 });
  
 reset.addEventListener('click',()=>{
