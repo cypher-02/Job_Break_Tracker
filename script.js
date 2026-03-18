@@ -33,6 +33,8 @@ sumbit.addEventListener('click', ()=>{
     let exit_min = exit_minutes.value.trim();
     let enter_h = enter_hours.value.trim();
     let enter_min = enter_minutes.value.trim();
+    
+    
 
     //string conversion
     let ent_h = parseFloat(exit_h);
@@ -55,6 +57,11 @@ sumbit.addEventListener('click', ()=>{
 
     // update text
     updateBreak();
+
+    exit_hours.value = "";
+    exit_minutes.value = "";
+    enter_hours.value = "";
+    enter_minutes.value = "";
 });
  
 reset.addEventListener('click',()=>{
