@@ -34,7 +34,9 @@ sumbit.addEventListener('click', ()=>{
     let enter_h = enter_hours.value.trim();
     let enter_min = enter_minutes.value.trim();
     
-    
+    if(exit_hours.value || exit_minutes.value < enter_hours.value || enter_minutes.value){
+        alert("Error wrong input");
+    }
 
     //string conversion
     let ent_h = parseFloat(exit_h);
