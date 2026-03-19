@@ -2,7 +2,9 @@ html,
 body {
     width: 100%;
     max-width: 100%;
+    min-height: 100%;
     overflow-x: hidden;
+    background: #020617;
 }
 
 /* RESET */
@@ -22,7 +24,8 @@ body {
     padding: 20px;
     position: relative;
     overflow-x: hidden;
-    background: radial-gradient(circle at top, #0f172a, #020617 70%);
+    background:
+        radial-gradient(circle at top, #0f172a 0%, #020617 70%);
 }
 
 /* GRID BACKGROUND */
@@ -35,8 +38,14 @@ body::before {
         linear-gradient(90deg, rgba(0, 255, 255, 0.08) 1px, transparent 1px);
     background-size: 60px 60px;
     animation: gridMove 25s linear infinite;
-    z-index: -1;
     pointer-events: none;
+    z-index: 0;
+}
+
+/* make all page content stay above grid */
+body > * {
+    position: relative;
+    z-index: 1;
 }
 
 @keyframes gridMove {
@@ -80,8 +89,6 @@ body::before {
         0 0 30px rgba(0, 255, 255, 0.18),
         0 0 60px rgba(0, 255, 255, 0.08),
         inset 0 0 18px rgba(255, 255, 255, 0.03);
-    position: relative;
-    z-index: 2;
 }
 
 /* INPUTS */
@@ -97,7 +104,7 @@ body::before {
     outline: none;
     -webkit-appearance: none;
     appearance: none;
-    transition: border 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    transition: 0.3s;
 }
 
 .main input[type="number"]::placeholder {
@@ -122,10 +129,10 @@ body::before {
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
-/* SUBMIT BUTTON */
+/* SUBMIT */
 .sumbit {
     background: linear-gradient(135deg, #22d3ee, #6366f1);
-    color: #ffffff;
+    color: #fff;
     border: none;
     font-weight: 700;
     box-shadow: 0 0 14px rgba(99, 102, 241, 0.5);
@@ -136,7 +143,7 @@ body::before {
     box-shadow: 0 0 20px rgba(99, 102, 241, 0.75);
 }
 
-/* RESET BUTTON */
+/* RESET */
 .reset {
     background: rgba(2, 6, 23, 0.82);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -147,7 +154,7 @@ body::before {
     background: rgba(255, 255, 255, 0.08);
 }
 
-/* OUTPUT TEXT */
+/* OUTPUT */
 .main p {
     margin-top: 22px;
     font-size: 18px;
@@ -170,7 +177,7 @@ body::before {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     box-shadow: 0 0 8px rgba(34, 211, 238, 0.35);
-    z-index: 1000;
+    z-index: 2;
     max-width: 80vw;
 }
 
